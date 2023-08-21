@@ -1,0 +1,199 @@
+.workSection {
+    width: 100%;
+    background: var(--main-color);
+
+    padding-bottom: 80px;
+    position: relative;
+}
+
+.workHeading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 0 40px 0;
+
+    color: var(--primary-color);
+}
+
+.workHeading h3 {
+    font-size: 30px;
+}
+
+.workTimeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.workContainer {
+    padding: 10px 50px;
+    position: relative;
+    width: 50%;
+
+    opacity: 0;
+    z-index: 1;
+}
+
+.workContainerAnimation {
+    animation: movedown .8s ease forwards;
+    animation-delay: calc(0.7s * var(--i));
+}
+
+@keyframes movedown {
+    0% {
+        opacity: 1;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.workCard {
+    padding: 20px 30px;
+    background: var(--primary-color);
+
+    color: var(--main-color);
+    position: relative;
+    border-radius: 6px;
+    font-size: 16px;
+    border: 1px solid var(--primary-color);
+}
+
+.leftContainer {
+    left: 0;
+}
+
+.rightContainer {
+    left: 50%;
+}
+
+.workContainer img {
+    position: absolute;
+    width: 40px;
+    border-radius: 50%;
+    right: -20px;
+    top: 32px;
+    border: 2px solid var(--primary-color);
+    z-index: 10;
+    background: #fff;
+}
+
+.rightContainer img {
+    left: -20px;
+}
+
+.workTimeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background: var(--primary-color);
+    color: #fff;
+    top: 0;
+    left: 50%;
+    margin-left: -3px;
+
+    opacity: 0;
+    
+}
+
+.workTimelineAnimation::after {
+    animation: moveline 1.8s linear forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes moveline {
+    0% {
+        opacity: 1;
+        height: 0;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+    }
+}
+
+.workCard h2 {  
+    font-weight: 600;
+}
+
+.workCard small {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.workCard ul { 
+    font-size: 14px;
+}
+
+.descPoint {
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    color: #0e2431c9;
+}
+
+.rightContainerArrow { 
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 28px;
+    z-index: 1;
+
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid var(--primary-color);
+    left: -15px;
+}
+
+.leftContainerArrow {
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 28px;
+    z-index: 1;
+    
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid var(--primary-color);
+    right: -15px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .workHeading {
+        padding: 40px 0 10px 0;
+    }
+    .workTimeline {
+        margin: 40px auto;
+    }
+    .workTimeline::after{
+        left: 31px;
+    }
+    .workContainer {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 25px;
+    }
+    .workCard {
+        font-size: 13px;
+    }
+    .workCard small {
+        margin-bottom: 10px;
+    }
+    .rightContainer {
+        left: 0;
+    }
+
+    .leftContainer img, .rightContainer img {
+        left: 10px;
+    }
+
+    .leftContainerArrow, .rightContainerArrow {
+        border-right: 15px solid var(--primary-color);
+        border-left: 0;
+        left: -15px;
+    }
+}
