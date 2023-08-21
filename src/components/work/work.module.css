@@ -163,6 +163,9 @@
 
 
 @media screen and (max-width: 600px) {
+    .workSection {
+        padding: 100px 0;
+    }
     .workHeading {
         padding: 40px 0 10px 0;
     }
