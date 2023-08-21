@@ -5,12 +5,15 @@ import About from '@/components/about';
 import ContactForm from '../components/contact/index';
 import InfoComp from '@/components/info';
 
+interface Props {
+  isMobile : boolean
+}
 
-export default function MainPage() {
+export default function MainPage(props : Props) {
   return (
     <>
       <Home />
-      <About />
+      <About {...props} />
       <Work />
       <InfoComp />
       <ContactForm />

@@ -1,9 +1,12 @@
 import About from "@/components/about"
 
-const AboutPage = () => {
+interface Props {
+  isMobile : boolean
+}
+const AboutPage = (props: Props) => {
   return (
     <>
-        <About completeAnimation={true} />
+        <About completeAnimation={true} {...props} />
     </>
   )
 }

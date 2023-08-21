@@ -172,4 +172,8 @@
     .aboutSection h2 {
         margin-top: 1rem;
     }
+
+    .skillCardAnimation {
+        animation-delay: calc(.2s * var(--i));
+    }
 }

@@ -1,8 +1,10 @@
 import styles from '@/components/projects/project.module.css'
-import { CSSProperties, useEffect, useRef, useState } from 'react'
+import { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 
-interface Props {}
-const Projects = (props: Props) => {
+interface Props {
+  isMobile : boolean
+}
+const Projects = ({ isMobile }: Props) => {
   const myRef = useRef(null);
   const [showAnimation, setShowAnimation] = useState(false);
   const projects ={ 
@@ -98,47 +100,15 @@ const Projects = (props: Props) => {
             <h4>Work that I&apos;ve done in the past</h4>
           </div>
           {
-            projects.section1.map((project, idx) => (
-              <div key={idx} className={styles.projectCard}>
-                <div className={styles.imgContainer}>
-                  <img src={project.imgUrl} alt="" />
-                </div>
-                <div className={styles.projectContent}>
-                  <h4>{project.projectName}</h4>
-                  <p dangerouslySetInnerHTML={{__html: project.description }} ></p>
-                  <div className={styles.tagContainer}>
-                    {
-                      project.tags.map(tag => (
-                        <div key={tag} className={styles.tag}>{tag}</div>
-                      ))
-                    }
-                  </div>
-                </div>
-               
-              </div>
+            projects?.section1?.map((project, idx) => (
+              <ProjectCard key={idx} project={project} isMobile={isMobile} />
             ))
           }
         </div>
         <div style={{ "--i" : 1 } as CSSProperties} className={`${styles.middleSection} ${showAnimation ? styles.moveDownAnimation : ''}`}>
           {
-            projects.section2.map((project, idx) => (
-              <div key={idx} className={styles.projectCard}>
-                <div className={styles.imgContainer}>
-                  <img src={project.imgUrl} alt="" />
-                </div>
-                <div className={styles.projectContent}>
-                  <h4>{project.projectName}</h4>
-                  <p dangerouslySetInnerHTML={{__html: project.description }} ></p>
-                  <div className={styles.tagContainer}>
-                    {
-                      project.tags.map(tag => (
-                        <div key={tag} className={styles.tag}>{tag}</div>
-                      ))
-                    }
-                  </div>
-                </div>
-                
-              </div>
+            projects?.section2?.map((project, idx) => (
+              <ProjectCard key={idx} project={project} isMobile={isMobile} />
             ))
           }
         </div>
@@ -146,18 +116,7 @@ const Projects = (props: Props) => {
         <div style={{ "--i" : 1 } as CSSProperties} className={`${styles.rightSection} ${showAnimation ? styles.moveUpAnimation : ''}`}>
           {
             projects.section3.map((project, idx) => (
-              <div key={idx} className={styles.projectCard}>
-                <div className={styles.imgContainer}>
-                  <img src={project.imgUrl} alt="" />
-                </div>
-                <div className={styles.projectContent}>
-                  <h4>{project.projectName}</h4>
-                  <p dangerouslySetInnerHTML={{__html: project.description }} ></p>
-                </div>
-                <div className={styles.overlay}>
-                  
-                </div>
-              </div>
+              <ProjectCard key={idx} project={project} isMobile={isMobile} />
             ))
           }
         </div>
@@ -167,3 +126,36 @@ const Projects = (props: Props) => {
   )
 }
 export default Projects
+
+
+type Project = {
+  projectName : string,
+  description : string,
+  imgUrl : string,
+  tags : string[],
+  githubLink : string,
+  demo : string,
+}
+
+interface ProjectCardType {
+  project : Project
+  isMobile : boolean,
+}
+
+const ProjectCard : FC<ProjectCardType> = ({ project, isMobile }) => (<div className={styles.projectCard}>
+  <div className={styles.imgContainer}>
+    <img src={project.imgUrl} alt="" />
+  </div>
+  <div className={`${styles.projectContent} ${isMobile ? '' : styles.projectContentAnimation}`}>
+    <h4>{project.projectName}</h4>
+    <p dangerouslySetInnerHTML={{__html: project.description }} ></p>
+    <div className={styles.tagContainer}>
+      {
+        project.tags.map(tag => (
+          <div key={tag} className={styles.tag}>{tag}</div>
+        ))
+      }
+    </div>
+  </div>
+ 
+</div>)

@@ -1,11 +1,13 @@
 import ContactForm from "@/components/contact"
 import Projects from "@/components/projects"
 
-interface Props {}
+interface Props {
+  isMobile : boolean
+}
 const ProjectPage = (props: Props) => {
   return (
     <>
-        <Projects />
+        <Projects {...props} />
         {/* <ContactForm /> */}
     </>
   )

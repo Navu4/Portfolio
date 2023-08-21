@@ -4,15 +4,16 @@ import { CSSProperties, useEffect, useRef, useState } from "react";
 
 interface Props {
     completeAnimation? : boolean
+    isMobile : boolean
 }
 const About = (props: Props) => {
     const myRef = useRef<HTMLDivElement>(null);
     const [showAnimation, setShowAnimation] = useState(false);
-    const [skillSectionAnimation, setSkillSectionAnimation] = useState(false);
+    const [skillSectionAnimation, setSkillSectionAnimation] = useState<number[]>([]);
 
     const skillSection = [
         {
-            i: 0,
+            i: 1,
             heading: "Design",
             imgUrls: [
                 "https://stefantopalovicdev.vercel.app/static/media/html.6e7b1b463015c056aeb9a624c8dc2876.svg",
@@ -83,11 +84,27 @@ const About = (props: Props) => {
             const entry = entries[0];
             if (entry.isIntersecting) {
                 setShowAnimation(true);
-                setTimeout(() => setSkillSectionAnimation(true),1000);
+                if(entry.target.id !== 'descRef')
+                    setTimeout(() => setSkillSectionAnimation([...skillSection.map(s => s.i)]),1000);
             }
+           
+            entries.forEach(entry => {
+                if(entry.isIntersecting && skillSection.map(s => s.i).includes(parseInt(entry?.target?.id))) {
+                    console.log(entry?.target?.id);
+                    setSkillSectionAnimation(prev => prev.includes(parseInt(entry?.target?.id)) ? [...prev] : [...prev, parseInt(entry?.target?.id)]);
+                }
+            })
         });
         if (myRef.current) observer.observe(myRef.current);
+        const allSkillCardNode = document.querySelectorAll('.skill-card-observe')
+        allSkillCardNode.forEach(cardNode => {
+            observer.observe(cardNode);
+        })
     }, []);
+
+    useEffect(() => {
+        console.log({skillSectionAnimation});
+    }, [skillSectionAnimation])
     return (
         <section className={styles.aboutSection}>
             <div className={styles.aboutHeading}>
@@ -95,7 +112,7 @@ const About = (props: Props) => {
                     <AboutSVGComp completeAnimation={props.completeAnimation} />
                 </div>
             </div>
-            <div ref={myRef} className={styles.desc}>
+            <div ref={myRef} id={props.isMobile ? 'descRef' : ''} className={styles.desc}>
                 <p className={showAnimation ? styles.aboutDescAnimation : ''}>
                     A passionate Software Engineer excellent in building
                     software that improves the lives of those around me. <br />I
@@ -107,9 +124,9 @@ const About = (props: Props) => {
 
             <div className={styles.skillSection}>
                 {skillSection.map((skill) => (
-                    <div key={skill.i} style={{ "--i" : skill.i } as CSSProperties} className={`${styles.skillCard} ${skillSectionAnimation ? styles.skillCardAnimation : ''}`}>
+                    <div id={`${skill.i}`} key={skill.i} style={{ "--i" : skill.i } as CSSProperties} className={`skill-card-observe ${styles.skillCard} ${skillSectionAnimation?.includes(skill.i) ? styles.skillCardAnimation : ''}`}>
                         <h2>{skill.heading}</h2>
-                        <div className={styles.iconContainer}>
+                        <div className={`${styles.iconContainer}`} >
                             {skill.imgUrls.map((url, i) => (
                                 <img key={i} src={url} alt="" />
                             ))}
