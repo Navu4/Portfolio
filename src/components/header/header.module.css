@@ -1,0 +1,186 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+
+    background-color: #fff; 
+    transition: top 0.2s ease-in-out;
+}
+
+.hideHeader {
+    top: -65px;
+}
+
+.headerContainer {
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, rgba(192, 204, 218, 0.1) 0%, rgba(192, 204, 218, 0.6) 50.38%, rgba(192, 204, 218, 0.1) ) 100% 1;
+    border-top: none;
+
+    margin: 0 7%;
+}
+
+.logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+
+}
+.logo img {
+    height: 34px;
+    cursor: pointer;
+}
+
+.logoMain{
+    font-size: 28px;
+    font-weight: 700;
+
+    color: var(--secondary-color);
+}
+
+.navMenu {
+    display: flex;
+    height: 100%;
+}
+
+.navMenu .list {
+    width: 80px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.navMenu .list div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+    width: 100%;
+    cursor: pointer;
+
+    transform: translateY(11px);
+    transition: transform 0.3s ease;
+}
+
+.navMenu .list:hover div {
+    transform: translateY(-20px);
+}
+
+.navMenu .list span {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--main-color);
+}
+
+.navMenu .list:hover span {
+    opacity: 1;
+}
+
+.navMenu .list img {
+    opacity: 1;
+    height: 40px;
+    transition: opacity 0.3s ease;
+}
+
+.navMenu .list:hover img {
+    opacity: 0;
+}
+
+.hireMeBtn { 
+    position: relative;
+
+    border-radius: 4px;
+    padding: 10px 16px;
+    
+    font-size: 16px;
+    font-weight: 800;
+    background: var(--secondary-color);
+    border: 3px solid var(--secondary-color);
+
+    z-index: 1;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+
+    cursor: pointer;
+}
+
+.hireMeBtn:hover{
+    color: #fff;
+}
+
+.hireMeBtn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background: var(--secondary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+
+    transform-origin: left;
+    z-index: -1;
+}
+
+.hireMeBtn:hover::before {
+    transform: scaleX(1);
+}
+
+
+
+/* KEYFRAMES ANIMATION */
+
+@keyframes slideRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
+@media screen and (max-width: 600px) {
+    .logo {
+        display: none;
+    }
+
+    .navMenu .list {
+        width: 68px;
+        margin: 0 6px;
+    }
+}

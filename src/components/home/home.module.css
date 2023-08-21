@@ -1,0 +1,296 @@
+.home {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px 7% 0;
+    position: relative;
+    z-index: 1;
+}
+
+.home .homeContent {
+    max-width: 460px;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.homeContent h3 {
+    font-size: 32px;
+    color: var(--main-color);
+
+    opacity: 0;
+    animation: slideRight 0.7s ease forwards;
+    animation-delay: .5s;
+}
+
+.homeContent h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--main-color);
+
+    opacity: 0;
+    animation: slideRight 0.7s ease forwards;
+    animation-delay: .7s;
+}
+.homeContent p {
+    font-size: 18px;
+    font-weight: 500;
+    opacity: 0;
+    animation: slideLeft 0.7s ease forwards;
+    animation-delay: .7s;
+}
+
+.socialMedia a {
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    font-size: 20px;
+
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 25px 15px 30px 0;
+    transition: .5s ease;
+
+    cursor: pointer;
+
+    opacity: 0;
+    animation: slideLeft 0.7s ease forwards;
+    animation-delay: calc(.1s * var(--i));
+}
+
+.socialMedia a:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+.oppositeSocalMedia a {
+    border-width: 1px;
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.oppositeSocalMedia a:hover {
+    background: var(--primary-color) !important;
+    color: var(--main-color) !important;
+}
+
+.downloadCV {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--secondary-color);
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border: 2px solid transparent;
+    font-size: 16px;
+    color: #fff;
+
+    text-decoration: none;
+    font-weight: 600;
+    transition: .5s ease;
+
+    opacity: 0;
+    animation: slideTop 0.7s ease forwards;
+    animation-delay: 0.8s;
+    
+}
+
+.downloadCV:hover {
+    background: transparent;
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.home .professionContainer {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 768px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.professionContainer .professionBox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    animation: slideLeft 1s ease forwards, professionRotate 13s ease-out infinite;
+    animation-delay: 1.5s,3.5s;
+}
+
+.professionBox .profession {
+    position: absolute;
+    left: 0;
+    transform-origin: 384px;
+    transform: rotate(calc(360deg / 4 * var(--i)));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary-color);
+}
+
+.professionBox .profession:nth-child(1) i{
+    margin-right: 15px;
+}
+
+.professionBox .profession:nth-child(2) i{
+    padding-bottom: 20px;
+}
+
+.professionBox .profession:nth-child(4) i{
+    padding-bottom: 20px;
+}
+
+.profession h3 {
+    font-size: 32px;
+    line-height: 1;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.professionBox .circle {
+    width: 72%;
+    height: 72%;
+    border: 3px solid var(--secondary-color);
+    border-radius: 50%;
+}
+
+.professionContainer .overlay {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    height: 0;
+    width: 0;
+
+    border-top: 384px solid var(--secondary-color);
+    border-bottom: 384px solid var(--secondary-color);
+    border-left: 384px solid transparent;
+    border-right: 384px solid var(--secondary-color);
+
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.professionContainer .myImage {
+    width: 96%;
+    position: absolute;
+    bottom: 0;
+    
+    display: flex;
+    justify-content: flex-end;
+
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1.6s;
+}
+.myImage img {
+    height: 590px;
+    z-index: 100;
+}
+
+
+@keyframes professionRotate {
+    0%,20% {
+        transform: rotate(0deg);
+    }
+    25%,45% {
+        transform: rotate(-90deg);
+    }
+    50%,70% {
+        transform: rotate(-180deg);
+    }
+    75%,95% {
+        transform: rotate(-270deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+
+@keyframes slideRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideTop {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+
+@media screen and (max-width: 600px){
+    .homeContent h1 {
+        font-size: 40px;
+    }
+    .homeContent h3 {
+        font-size: 25px;
+    }
+    .homeContent p {
+        font-size: 20px;
+    }
+    .professionContainer {
+        display: none;
+    }
+}
