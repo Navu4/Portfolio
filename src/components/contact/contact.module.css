@@ -1,0 +1,180 @@
+.contactSection {
+    width: 100%;
+
+    position: relative;
+    padding: 100px 7% 100px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.contactHeading {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.contactHeading h1 {
+    font-size: 3.2em;
+    font-weight: bold;
+    line-height: 1.3;
+    max-width: unset;
+    color: var(--main-color);
+
+    text-align: center;
+}
+
+.contactHeading p {
+    margin: 0 auto;
+    font-size: 1.5em;
+    line-height: 1.2;
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #0e2431c9;
+}
+
+.formContainer {
+    width: 60%;
+    min-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+
+    margin-top: 70px;
+}
+
+.formRow1, .formRow2 {
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+
+.formRow2 .inputGroup {
+    width: 100% !important;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+
+    width: 45%;
+    color: rgba(61, 21, 95, 0.5);
+}
+
+.inputGroup .label {
+    font-size: 14px;
+    font-weight: 300;
+
+    margin-bottom: 10px;
+}
+
+.inputGroup input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: var(--primary-color);
+    outline: none;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid;
+    border-color: rgba(61, 21, 95, 0.5);
+    line-height: 1.5;
+    font-size: 1.12em;
+}
+
+.inputGroup textarea {
+    border: 0;
+    font-family: inherit;
+
+    
+    padding-bottom: 10px;
+    color: rgba(61, 21, 95, 0.5);;
+    background: transparent;
+    border-bottom: 1px solid rgba(61, 21, 95, 0.5);
+
+    /* height: 3.6em; */
+
+    line-height: 1.5;
+    font-size: 1.12em;
+    /* font-weight: 500; */
+
+    resize: none;
+}
+
+.inputGroup input::placeholder, .inputGroup textarea::placeholder {
+    color: rgba(34, 14, 53, 0.462);
+    font-weight: 300 !important;
+    line-height: 1.5;
+    font-size: 1em;
+}
+
+.inputGroup input:focus::placeholder, .inputGroup textarea:focus::placeholder{
+    color: transparent;
+    transition: ease;
+}
+
+
+.inputText:focus {
+    color: #4831d4 !important;
+    border-color: #4831d4 !important;
+}
+
+
+
+.shootBtn { 
+    position: relative;
+    width: fit-content;
+    padding: 15px 50px;
+    
+    line-height: 1.5;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+
+    z-index: 1;
+    transition: color 0.3s ease;
+
+    cursor: pointer;
+
+}
+
+.shootBtn:hover{
+    color: #fff;
+}
+
+.shootBtn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background: var(--secondary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+
+    transform-origin: left;
+    z-index: -1;
+}
+
+.shootBtn:hover::before {
+    transform: scaleX(1);
+}
+
