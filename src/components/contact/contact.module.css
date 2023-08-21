@@ -178,3 +178,18 @@
     transform: scaleX(1);
 }
 
+@media screen and (max-width: 600px){
+    .formContainer {
+        min-width: 100%;
+    }
+
+    .formRow1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputGroup {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

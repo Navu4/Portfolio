@@ -206,3 +206,30 @@
 }
 
 /* ################################## */
+
+
+@media screen and (max-width: 600px){
+    .infoContainer {
+        flex-direction: column;
+    }
+
+    .infoSection {
+        padding: 100px 7%;
+        width: 100%;
+    }
+    .infoLane {
+        width: 100%;
+        padding: 40px 20px;
+    }
+    .infoLane article {
+        width: 100%;
+    }
+    .projectInfo {
+        border-width: 0 0 2px 0;
+    }
+
+
+    .outterContainer {
+        display: none;
+    }
+}
