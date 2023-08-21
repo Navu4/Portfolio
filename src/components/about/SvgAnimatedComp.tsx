@@ -2,11 +2,14 @@ import { memo, useEffect, useRef } from "react";
 import styles from "@/components/about/about.module.css";
 import UtilityFunction from "@/utils";
 
-const AboutSVGComp = memo(({ completeAnimation : completeAnimationAutomatically } : { completeAnimation? : boolean }) => {
+interface Props {
+    completeAnimation? : boolean
+}
+const AboutSVGComp = (props: Props) => {
     const ref = useRef<SVGPathElement | null>(null);
 
     useEffect(() => {
-        if(completeAnimationAutomatically) {
+        if(props.completeAnimation) {
             return;
         }
 
@@ -45,7 +48,7 @@ const AboutSVGComp = memo(({ completeAnimation : completeAnimationAutomatically 
 
         // Find scroll percentage on scroll (using cross-browser properties), and offset dash same amount as percentage scrolled
         window.addEventListener("scroll", myFunction);
-    }, []);
+    }, [props.completeAnimation]);
     return (
         <svg className={styles.mySVG} x={0} y={0} viewBox="0 0 591.7 313.3">
             <path
@@ -89,7 +92,7 @@ const AboutSVGComp = memo(({ completeAnimation : completeAnimationAutomatically 
             Sorry, your browser does not support inline SVG.
         </svg>
     );
-});
+};
 
 
-export default AboutSVGComp;
+export default memo(AboutSVGComp);

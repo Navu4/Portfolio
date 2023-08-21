@@ -16,7 +16,7 @@ const ConnectWithMeNudge = (props: Props) => {
                     </p>
                 </div>
                 <div className={styles.item}>
-                    <a
+                    <Link
                         className={styles.letConnectBtn}
                         href="/contact?work=1"
                     >
@@ -38,8 +38,8 @@ const ConnectWithMeNudge = (props: Props) => {
                                 ></path>
                             </svg>
                         {/* </span> */}
-                        Let's do this
-                    </a>
+                        Let&apos;s do this
+                    </Link>
                 </div>
             </div>
         </div>

@@ -95,7 +95,7 @@ const Projects = (props: Props) => {
         <div style={{ "--i" : 1 } as CSSProperties} className={`${styles.leftSection} ${showAnimation ? styles.moveUpAnimation : ''}`}>
           <div className={styles.projectHeading}>
             <p>My Projects</p>
-            <h4>Work that I've done in the past</h4>
+            <h4>Work that I&apos;ve done in the past</h4>
           </div>
           {
             projects.section1.map((project, idx) => (

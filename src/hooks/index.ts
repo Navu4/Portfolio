@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export function useScrollVisiblility() {
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const controlNavbar = () => {
+    const controlNavbar = useCallback(() => {
         if (typeof window !== "undefined") {
             if (window.scrollY > lastScrollY) {
                 // if scroll down hide the navbar
@@ -17,7 +17,7 @@ export function useScrollVisiblility() {
             // remember current page location to use in the next move
             setLastScrollY(window.scrollY);
         }
-    };
+    }, [lastScrollY]);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -28,6 +28,6 @@ export function useScrollVisiblility() {
                 window.removeEventListener("scroll", controlNavbar);
             };
         }
-    }, [lastScrollY]);
+    }, [lastScrollY, controlNavbar]);
     return show;
 }
