@@ -180,7 +180,11 @@
     }
 
     .navMenu .list {
-        width: 68px;
-        margin: 0 6px;
+        width: 58px;
+        margin: 0 2px;
+    }
+
+    .navMenu .list span {
+        font-size: 10px;
     }
 }
