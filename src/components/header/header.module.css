@@ -175,6 +175,14 @@
 
 
 @media screen and (max-width: 600px) {
+    .headerContainer {
+        margin: 0;
+        width: 100%;
+    }
+    .navMenu {
+        width: 100%;
+        padding: 0 20px;
+    }
     .logo {
         display: none;
     }

@@ -3,24 +3,27 @@ import styles from '@/components/header/header.module.css';
 import { CSSProperties, memo } from 'react';
 import { useScrollVisiblility } from '@/hooks';
 
-interface Props {}
+interface Props {
+  isMobile : boolean
+}
 const Header = (props: Props) => {
   const showOrHideNavbar = useScrollVisiblility();
+  
   const navMenuData = [
     { link : '/about', i : 7, imgUrl : 'https://cdn-icons-png.flaticon.com/512/3242/3242120.png', alt : 'coder-img', text : 'About', imgStyle: true, height: '36px' },
     { link : '/work', i : 8, imgUrl : 'https://cdn-icons-png.flaticon.com/512/4192/4192708.png', alt : 'work', text : 'My Work' },
-    { link : '/project', i : 9, imgUrl : 'https://www.pngitem.com/pimgs/m/499-4998998_code-icon-png-free-coding-symbol-transparent-background.png', alt : 'project', text : 'My Project', imgStyle: true, height: '30px' },
+    { link : '/project', i : 9, imgUrl : 'https://www.pngitem.com/pimgs/m/499-4998998_code-icon-png-free-coding-symbol-transparent-background.png', alt : 'project', text : 'My Project', imgStyle: true, height: '28px' },
     { link : 'https://medium.com/@snav.jot5454', i : 10, imgUrl : 'https://static.thenounproject.com/png/1453176-200.png', alt : 'my-blogs', text : 'My Blogs' },
     { link : '/contact', i : 11, imgUrl : 'https://cdn-icons-png.flaticon.com/512/3095/3095583.png', alt : 'contact', text : 'Contact', imgStyle: true },
   ]
   return (
-    <header className={`${styles.header} ${showOrHideNavbar ? styles.showHeader : styles.hideHeader }`}>
+    <header className={`${styles.header} ${props.isMobile ? styles.showHeader : showOrHideNavbar ? styles.showHeader : styles.hideHeader }`}>
       <div className={styles.headerContainer}>
-        <div className={`${styles.logo} ${styles.logoMain}`}>
+        {!props.isMobile && <div className={`${styles.logo} ${styles.logoMain}`}>
           <Link href={'/'} >
             Nav.
           </Link>
-        </div>
+        </div>}
         <nav className={styles.navMenu} >
           {
             navMenuData.map(navData => (

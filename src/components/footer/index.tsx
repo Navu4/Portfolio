@@ -14,7 +14,7 @@ const FooterSection = (props: Props) => {
     ]
     return <footer className={styles.footer}>
         <div className={styles.footerQuote}>
-            <Link href={'/about'} >
+            <Link href={'/'} >
                 <h3>Nav.</h3>
             </Link> 
             <p>Living, learning, & leveling up one day at a time.</p>

@@ -4,11 +4,12 @@ import Footer from '../footer/index';
 
 interface LayoutProps {
   children?: ReactNode
+  isMobile : boolean
 }
-const Layout : FC<LayoutProps> = ({ children }) => {
+const Layout : FC<LayoutProps> = ({ children, isMobile }) => {
   return (
     <>
-        <Header />
+        <Header isMobile={isMobile} />
         {children}
         <Footer />
     </>
