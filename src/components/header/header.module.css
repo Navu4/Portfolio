@@ -178,6 +178,11 @@
     .logo {
         display: none;
     }
+    
+    .navMenu {
+        display: flex;
+        justify-content: space-between;
+    }
 
     .navMenu .list {
         width: 58px;
