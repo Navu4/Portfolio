@@ -1,7 +1,43 @@
 import styles from "@/components/contact/contact.module.css";
+import { sendContactForm } from "@/lib/api";
+import UtilityFunction from "@/utils";
+import { ChangeEvent, useState } from "react";
 
 interface Props {}
+
 const ContactForm = (props: Props) => {
+    const [form, setFormData] = useState({ name : '', email : '', message : '' });
+    const [state, setState] = useState({ loading : false, error : '', emailSent : false });
+    const validName = (name : string) => name && name.trim().length > 3;
+    const validEmail = (email : string) => UtilityFunction.checkEmail(email);
+    const validContent = (content : string) => content && content.trim().length > 0;
+
+    const handleChange = ({ target } : ChangeEvent<HTMLTextAreaElement>) => {
+        setFormData(prevForm => ({ 
+            ...prevForm,
+            [target.name] : target.value,
+        }));
+    }
+
+    const sendEmail = async () => {
+        if(!validName(form.name)) 
+            return;
+        if(!validEmail(form.email))
+            return;
+        if(!validContent(form.message) || form.message.length == 0) {
+            return;
+        }
+
+        setState(prev => ({ ...prev, loading : true }));
+        try {
+            await sendContactForm(form);
+            setState(prev => ({ ...prev, loading : false, emailSent : true }));
+        } catch (err: any) {
+            console.error(err);
+            setState(prev => ({ ...prev, loading : false, error : err.message }));
+        }
+    }
+
     return (
         <section className={styles.contactSection}>
             
@@ -20,7 +56,9 @@ const ContactForm = (props: Props) => {
                         <textarea
                             className={styles.inputText}
                             rows={1}
+                            name="name"
                             placeholder="Enter your name"
+                            onChange={handleChange}
                         />
                     </div>
 
@@ -29,7 +67,9 @@ const ContactForm = (props: Props) => {
                         <textarea
                             className={styles.inputText}
                             rows={1}
+                            name="email"
                             placeholder="Enter your email address"
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
@@ -42,14 +82,23 @@ const ContactForm = (props: Props) => {
                             rows={7}
                             minLength={30}
                             style={{ height: "3.6em" }}
+                            name="message"
                             placeholder="Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?"
+                            onChange={handleChange}
                         />
                     </div>
                 </div>
 
-                <button className={styles.shootBtn}>
-                    {" "}
-                    SEND <span>→</span>{" "}
+                <button className={styles.shootBtn} onClick={sendEmail}>
+                    {
+                        state.error ? 
+                            <>{state.error}</> : 
+                        state.loading ? 
+                            <>SENDING...</> :
+                        state.emailSent ? 
+                            <>EMAIL SENT!</> :
+                            <>SEND <span>→</span></>
+                    }
                 </button>
             </div>
         </section>
