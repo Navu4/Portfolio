@@ -7,9 +7,9 @@ interface Props {}
 const Header = (props: Props) => {
   const showOrHideNavbar = useScrollVisiblility();
   const navMenuData = [
-    { link : '/about', i : 7, imgUrl : 'https://cdn-icons-png.flaticon.com/512/3242/3242120.png', alt : 'coder-img', text : 'About', imgStyle: true },
+    { link : '/about', i : 7, imgUrl : 'https://cdn-icons-png.flaticon.com/512/3242/3242120.png', alt : 'coder-img', text : 'About', imgStyle: true, height: '36px' },
     { link : '/work', i : 8, imgUrl : 'https://cdn-icons-png.flaticon.com/512/4192/4192708.png', alt : 'work', text : 'My Work' },
-    { link : '/project', i : 9, imgUrl : 'https://cdn-icons-png.flaticon.com/512/4192/4192708.png', alt : 'project', text : 'My Project' },
+    { link : '/project', i : 9, imgUrl : 'https://www.pngitem.com/pimgs/m/499-4998998_code-icon-png-free-coding-symbol-transparent-background.png', alt : 'project', text : 'My Project', imgStyle: true, height: '30px' },
     { link : 'https://medium.com/@snav.jot5454', i : 10, imgUrl : 'https://static.thenounproject.com/png/1453176-200.png', alt : 'my-blogs', text : 'My Blogs' },
     { link : '/contact', i : 11, imgUrl : 'https://cdn-icons-png.flaticon.com/512/3095/3095583.png', alt : 'contact', text : 'Contact', imgStyle: true },
   ]
@@ -46,7 +46,7 @@ const Header = (props: Props) => {
               <Link key={navData.i} href={navData.link} className={styles.list} style={{ "--i" : navData.i } as CSSProperties}>
                 <div>
                   <img 
-                    style={ navData.imgStyle ? { height: '36px' } : {}}
+                    style={ navData.imgStyle ? { height: navData.height ? navData.height : '36px' } : {}}
                     src={navData.imgUrl}
                     alt={navData.alt}
                     />
