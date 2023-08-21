@@ -1,0 +1,178 @@
+.aboutSection {
+    position: relative;
+    width: 100%;
+
+    z-index: 1;
+
+    padding: 100px 40px;
+}
+
+.aboutHeading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.wrap {
+    width: 400px;
+}
+
+.mySVG {
+    width: 100%;
+    height: 100%;
+} 
+
+.mySVG path {
+    stroke: var(--main-color);
+    stroke-width: 20px;
+}
+
+.quoteTextBG {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+.quoteText {
+    padding: 0.5em;
+    font-size: 50px;
+    color: var(--main-color);
+    fill: var(--main-color);
+
+    font-family: 'Montserrat',sans-serif !important;
+}
+
+.aboutSection .desc {
+    padding: 18px 7% 0;
+}
+
+.aboutSection .desc p{
+    font-size: 18px;
+    text-align: center;
+
+    padding: 0 100px;
+
+    color: #0e2431c9;
+    font-family: 'Montserrat',sans-serif;
+
+    opacity: 0;
+}
+
+.aboutDescAnimation {
+    animation: movedown 0.7s ease forwards;
+    animation-delay: 0.4s;
+}
+
+
+@keyframes movedown {
+    0% {
+        opacity: 1;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.skillSection {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.skillCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 360px;
+    margin: 0 18px;
+    
+
+    opacity: 0;
+
+    background: var(--primary-color);
+    border-radius: 8px;
+}
+
+.skillCardAnimation {
+    animation: slideLeft 0.7s ease forwards;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes slideLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(140px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+
+.skillCard h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-top: 1em;
+    line-height: 1.25;
+    color: #333;
+}
+
+
+.skillCard p {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    margin: 1em 0;
+
+    color: #0e2431c9;
+    font-family: 'Montserrat',sans-serif;
+}
+
+.iconContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+    margin: 20px 0 10px 0;
+}
+
+.iconContainer img {
+    height: 55px;
+    background: #fff;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .aboutSection {
+        padding: 0;
+    }
+
+    .wrap {
+        width: 100%;
+    }
+
+    .aboutSection .desc p {
+        padding: 0;
+    }
+
+    .aboutSection {
+
+    }
+    .aboutSection h2 {
+        margin-top: 1rem;
+    }
+}
