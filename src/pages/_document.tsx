@@ -4,6 +4,8 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content="#000" />
                 <link
                     rel="stylesheet"
                     href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"

@@ -19,11 +19,11 @@ const Header = (props: Props) => {
   return (
     <header className={`${styles.header} ${props.isMobile ? styles.showHeader : showOrHideNavbar ? styles.showHeader : styles.hideHeader }`}>
       <div className={styles.headerContainer}>
-        {!props.isMobile && <div className={`${styles.logo} ${styles.logoMain}`}>
+        <div className={`${styles.logo} ${styles.logoMain}`}>
           <Link href={'/'} >
             Nav.
           </Link>
-        </div>}
+        </div>
         <nav className={styles.navMenu} >
           {
             navMenuData.map(navData => (
