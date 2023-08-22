@@ -1,42 +1,38 @@
 import styles from '@/components/home/home.module.css';
 import Link from 'next/link';
-import { CSSProperties, memo } from 'react';
+import { CSSProperties, FC, memo } from 'react';
 import ParticleInstance from '../particle';
 
-interface Props {}
+type Profession = { text : string, i : number }
+export interface HomeProps {
+    socialMedia : { name : string, i : number, link : string }[]
+    coverImgUrl : string
+    name : string
+    description : string
+    professionAnimationData : Profession[]
+    isMobile : boolean
+}
 
-const Home = (props: Props) => {
-    const socialMedia = [
-        { name : 'bxl-linkedin', i : 7, link : 'https://www.linkedin.com/in/navjot-singh-b090b71ab/' },
-        { name : 'bxl-github', i : 8, link : 'https://github.com/Navu4' },
-        { name : 'bx-code', i : 9, link : 'https://leetcode.com/NavjotSingh1/' },
-        { name : 'bxl-instagram-alt', i : 10, link : 'https://www.instagram.com/navu__4/' },
-    ]
+const Home : FC<HomeProps> = (props) => {
   return (
     <section className={styles.home}>
         <div className={styles.homeContent}>
             <h3>Hello, I am</h3>
-            <h1>Navjot Singh</h1>
-            <p>A Software Engineer who is highly skilled in developing solid and scalable products with great user experiences.</p>
+            <h1>{props.name}</h1>
+            <p>{props.description}</p>
 
-            <SocialMediaLinks socialMedia={socialMedia} />
+            <SocialMediaLinks socialMedia={props.socialMedia} />
 
-            <a href="https://drive.google.com/file/d/1h1qC75a-jIvqihoFfdFTgX-e_MG8SIbl/view?usp=sharing" className={styles.downloadCV} target='_blank'>Download CV</a>
+            <a href={props.coverImgUrl} className={styles.downloadCV} target='_blank'>Download CV</a>
         </div>
-        <ProfessionSection />
+        <ProfessionSection profession={props.professionAnimationData} />
     </section>
   )
 }
 export default Home
 
 
-const ProfessionSection = memo(function Section() {
-    const profession = [
-        { text : 'Software Engineer', i : 0 },
-        { text : 'Full Stack Developer', i : 1 },
-        { text : 'ML Enthusiast', i : 2 },
-        { text : 'Frontend Developer', i : 3 },
-    ]
+const ProfessionSection = function Section({ profession } : { profession : Profession[] }) {
     return (
         <>
             <div className={styles.professionContainer}>
@@ -59,7 +55,7 @@ const ProfessionSection = memo(function Section() {
             
         </>
     )
-});
+};
 
 export const SocialMediaLinks = ({socialMedia, styleOpposite} : { styleOpposite?: boolean, socialMedia : { name : string, i : number, link : string }[] }) => <div className={`${styles.socialMedia} ${styleOpposite ? styles.oppositeSocalMedia : ''}`}>
 {    socialMedia.map(media => (

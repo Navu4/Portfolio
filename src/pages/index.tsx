@@ -5,16 +5,43 @@ import About from '@/components/about';
 import ContactForm from '../components/contact/index';
 import InfoComp from '@/components/info';
 
-interface Props {
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
+ 
+export const getServerSideProps: GetServerSideProps<{
+  data: {
+    metaData : any,
+    about : any,
+    project : any,
+    work : any,
+  }
+}> = async () => {
+  let data : any = null;
+  try {
+    const res = await fetch(`${process.env.API_URL}/api/portfolio`)
+    data = await res.json()
+  } catch (error) {
+    console.log(error);
+  }
+  return { props: data }
+}
+
+interface Props extends InferGetServerSidePropsType<typeof getServerSideProps> {
   isMobile : boolean
+  data :  {
+    metaData : any,
+    about : any,
+    project : any,
+    work : any,
+  }
 }
 
 export default function MainPage(props : Props) {
+  console.log({ props});
   return (
     <>
-      <Home />
-      <About {...props} />
-      <Work />
+      <Home {...props.data.metaData} isMobile={props.isMobile} />
+      <About {...props.data.about} isMobile={props.isMobile} />
+      <Work work={props.data.work} isMobile={props.isMobile} />
       <InfoComp />
       <ContactForm />
     </>
