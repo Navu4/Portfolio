@@ -36,7 +36,6 @@ interface Props extends InferGetServerSidePropsType<typeof getServerSideProps> {
 }
 
 export default function MainPage(props : Props) {
-  console.log({ props});
   return (
     <>
       <Home {...props.data.metaData} isMobile={props.isMobile} />
