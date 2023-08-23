@@ -46,12 +46,11 @@ const About = (props: Props) => {
                 </div>
             </div>
             <div ref={myRef} id={props.isMobile ? 'descRef' : ''} className={styles.desc}>
-                <p className={showAnimation ? styles.aboutDescAnimation : ''}>
-                    {props.description}
+                <p className={showAnimation ? styles.aboutDescAnimation : ''} dangerouslySetInnerHTML={{ __html : props.description }} >
                 </p>
             </div>
 
-            <div className={styles.skillSection}>
+        <div className={styles.skillSection}>
                 {props.skills.map((skill) => (
                     <div id={`${skill.i}`} key={skill.i} style={{ "--i" : skill.i } as CSSProperties} className={`skill-card-observe ${styles.skillCard} ${skillSectionAnimation?.includes(skill.i) ? styles.skillCardAnimation : ''}`}>
                         <h2>{skill.heading}</h2>
