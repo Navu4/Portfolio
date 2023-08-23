@@ -1,5 +1,6 @@
 import styles from '@/components/projects/project.module.css'
 import { CSSProperties, FC, useEffect, useRef, useState } from 'react'
+import  Link  from 'next/link';
 
 interface Props {
   isMobile : boolean
@@ -156,6 +157,10 @@ const ProjectCard : FC<ProjectCardType> = ({ project, isMobile }) => (<div class
         ))
       }
     </div>
+    {/* <div className={styles.links}>
+      <Link href={project.githubLink}>Github</Link>
+      <Link href={project.demo}>Demo</Link>
+    </div> */}
   </div>
  
 </div>)
