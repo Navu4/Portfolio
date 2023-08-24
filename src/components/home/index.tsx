@@ -11,6 +11,7 @@ export interface HomeProps {
     description : string
     professionAnimationData : Profession[]
     isMobile : boolean
+    resumeUrl : string
 }
 
 const Home : FC<HomeProps> = (props) => {
@@ -23,16 +24,16 @@ const Home : FC<HomeProps> = (props) => {
 
             <SocialMediaLinks socialMedia={props.socialMedia} />
 
-            <a href={props.coverImgUrl} className={styles.downloadCV} target='_blank'>Download CV</a>
+            <a href={props.resumeUrl} className={styles.downloadCV} target='_blank'>Download CV</a>
         </div>
-        <ProfessionSection profession={props.professionAnimationData} />
+        <ProfessionSection coverImgUrl={props.coverImgUrl} profession={props.professionAnimationData} />
     </section>
   )
 }
 export default Home
 
 
-const ProfessionSection = function Section({ profession } : { profession : Profession[] }) {
+const ProfessionSection = function Section({ profession, coverImgUrl } : { profession : Profession[], coverImgUrl : string }) {
     return (
         <>
             <div className={styles.professionContainer}>
@@ -48,7 +49,7 @@ const ProfessionSection = function Section({ profession } : { profession : Profe
                 </div>
                 <div className={styles.overlay}></div>
                 <div className={styles.myImage}>
-                    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/51900952/259156872-b43466dd-b48f-4328-8329-7c55343dcfac.png" alt="" />
+                    <img src={coverImgUrl} alt="" />
                 </div>
                 <ParticleInstance id="tsparticle2" />
             </div>
