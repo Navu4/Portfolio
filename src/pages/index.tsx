@@ -6,7 +6,7 @@ import ContactForm from '../components/contact/index';
 import InfoComp from '@/components/info';
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-import Head from 'next/head';
+import SEOComp from '@/utils/SEO';
  
 export const getServerSideProps: GetServerSideProps<{
   data: {
@@ -39,28 +39,10 @@ interface Props extends InferGetServerSidePropsType<typeof getServerSideProps> {
 export default function MainPage(props : Props) {
   return (
     <>
-      <Head>
-      <meta
-          name="description"
-          content={props.data.metaData.description}
+      <SEOComp 
+        title={`${props.data.metaData.name} &#128640; | Software Engineer`} 
+        description={props.data.metaData.description}
       />
-      <meta
-          property="og:title"
-          content={`${props.data.metaData.name} &#128640; | Software Engineer`}
-      />
-      <meta
-          name="og:description"
-          content={props.data.metaData.description}
-      />
-      <meta
-          name="twitter:title"
-          content={`${props.data.metaData.name} &#128640; | Software Engineer`}
-      />
-      <meta
-          name="twitter:description"
-          content={props.data.metaData.description}
-      />
-      </Head>
       <Home {...props.data.metaData} isMobile={props.isMobile} />
       <About {...props.data.about} isMobile={props.isMobile} />
       <Work work={props.data.work} isMobile={props.isMobile} />
