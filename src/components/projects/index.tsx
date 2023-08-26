@@ -157,10 +157,10 @@ const ProjectCard : FC<ProjectCardType> = ({ project, isMobile }) => (<div class
         ))
       }
     </div>
-    {/* <div className={styles.links}>
-      <Link href={project.githubLink}>Github</Link>
-      <Link href={project.demo}>Demo</Link>
-    </div> */}
+    <div className={styles.links}>
+      <Link href={project.githubLink} target='_blank'>Github <i className='bx bx-link-external'></i></Link>
+      <Link href={project.demo} target='_blank'>Demo <i className='bx bx-link-external'></i></Link>
+    </div>
   </div>
  
 </div>)
