@@ -5,6 +5,7 @@
     background-color: var(--background-color);
 
     padding:  150px calc(6em - 2em);
+    overflow-x: hidden;
 }
 
 .infoContainer {
