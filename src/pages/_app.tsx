@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <link
                     rel="icon"
                     type="image/x-icon"
-                    href="https://github-production-user-asset-6210df.s3.amazonaws.com/51900952/259156872-b43466dd-b48f-4328-8329-7c55343dcfac.png"
+                    href="https://res.cloudinary.com/dr4kgyjzt/image/upload/v1693134398/zd89y97mltcvy2i6sd9m.png"
                 />
 
                 <meta property="og:type" content="website" />
