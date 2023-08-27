@@ -25,14 +25,14 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta property="og:site_name" content="Navjot" />
                 <meta
                     property="og:image"
-                    content="https://github-production-user-asset-6210df.s3.amazonaws.com/51900952/259156872-b43466dd-b48f-4328-8329-7c55343dcfac.png"
+                    content="https://res.cloudinary.com/dr4kgyjzt/image/upload/v1693137206/gj9n7rvccadhplh5vyvr.png"
                 />
                 <meta name="twitter:site" content="@Navjot Singh &#128640;" />
                 <meta name="twitter:creator" content="@Navjot Singh &#128640;" />
                 <meta name="twitter:card" content="summary" />
                 <meta
                     name="twitter:image:src"
-                    content="https://github-production-user-asset-6210df.s3.amazonaws.com/51900952/259156872-b43466dd-b48f-4328-8329-7c55343dcfac.png"
+                    content="https://res.cloudinary.com/dr4kgyjzt/image/upload/v1693137206/gj9n7rvccadhplh5vyvr.png"
                 />
 
                 <base href="/" />
@@ -46,12 +46,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
                 <link
                     rel="apple-touch-icon"
-                    href="https://github-production-user-asset-6210df.s3.amazonaws.com/51900952/259156872-b43466dd-b48f-4328-8329-7c55343dcfac.png"
+                    href="https://res.cloudinary.com/dr4kgyjzt/image/upload/v1693137206/gj9n7rvccadhplh5vyvr.png"
                     sizes="192x192"
                 />
                 <link
                     rel="alternate"
-                    href="https://github-production-user-asset-6210df.s3.amazonaws.com/51900952/259156872-b43466dd-b48f-4328-8329-7c55343dcfac.png"
+                    href="https://res.cloudinary.com/dr4kgyjzt/image/upload/v1693137206/gj9n7rvccadhplh5vyvr.png"
                 />
             </Head>
             <Layout isMobile={isMobile}>
