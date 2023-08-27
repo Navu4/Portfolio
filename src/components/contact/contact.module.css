@@ -134,6 +134,11 @@
 }
 
 
+.errorMsg {
+    color: rgba(244, 71, 71, 0.875);
+    margin-bottom: 10px;
+}
+
 
 .shootBtn { 
     position: relative;

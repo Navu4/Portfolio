@@ -20,15 +20,20 @@ const ContactForm = (props: Props) => {
     }
 
     const sendEmail = async () => {
-        if(!validName(form.name)) 
+        if(!validName(form.name)) {
+            setState(prev => ({...prev, error : 'Please enter a valid name'}))
             return;
-        if(!validEmail(form.email))
+        }
+        if(!validEmail(form.email)){
+            setState(prev => ({...prev, error : 'Please enter a valid email address'}))
             return;
+        }
         if(!validContent(form.message) || form.message.length == 0) {
+            setState(prev => ({...prev, error : 'Please enter a valid message'}))
             return;
         }
 
-        setState(prev => ({ ...prev, loading : true }));
+        setState(prev => ({ ...prev, error : '', loading : true }));
         try {
             await sendContactForm(form);
             setState(prev => ({ ...prev, loading : false, emailSent : true }));
@@ -88,11 +93,9 @@ const ContactForm = (props: Props) => {
                         />
                     </div>
                 </div>
-
+                <div className={styles.errorMsg}>{state.error}</div>
                 <button className={styles.shootBtn} onClick={sendEmail}>
-                    {
-                        state.error ? 
-                            <>{state.error}</> : 
+                    { 
                         state.loading ? 
                             <>SENDING...</> :
                         state.emailSent ? 
