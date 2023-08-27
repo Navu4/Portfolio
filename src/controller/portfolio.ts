@@ -1,4 +1,5 @@
 import { connectToDatabase } from "@/config/dbconnect";
+import { Condition, ObjectId } from "mongoose";
 
 export async function getMetaData() {
     try {
@@ -47,6 +48,20 @@ export async function getProjectData() {
             response[`section${data.section}`] = data.projects;
         })
         return { project : response };
+    } catch (error) {
+        return { message : 'Failed to fetch data' };
+    }
+}
+
+
+export async function updateWebsiteVisitCount(id : Condition<ObjectId>, visitCount : number) {
+    try {
+        const { db } = await connectToDatabase();
+        const home = await db.collection('home');
+
+        const result = await home.findOneAndUpdate({ "name" : "Navjot Singh" }, { $inc: {"visitCount" : 1} }, { returnDocument: 'after' });
+        console.log({result});
+        return { message : "Updated Successfully"  };
     } catch (error) {
         return { message : 'Failed to fetch data' };
     }

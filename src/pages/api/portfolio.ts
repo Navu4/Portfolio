@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { connectToDatabase } from "@/config/dbconnect";
-import { getAboutData, getMetaData, getProjectData, getWorkData } from "@/controller/portfolio";
+import { getAboutData, getMetaData, getProjectData, getWorkData, updateWebsiteVisitCount } from "@/controller/portfolio";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -101,7 +101,9 @@ async function updatePortfolioData(
     res: NextApiResponse<Data>
 ) {
     try {
-        
+        const visitCount = req.body.visitCount;
+        const id = req.body.id;
+        await updateWebsiteVisitCount(id, visitCount);
         return res.json({
             message: 'Data added successfully',
             success: true,

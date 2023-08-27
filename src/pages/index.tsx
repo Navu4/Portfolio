@@ -7,6 +7,8 @@ import InfoComp from '@/components/info';
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import SEOComp from '@/utils/SEO';
+import { useEffect } from 'react';
+import { updateWebsiteVisitCount } from '@/lib/api';
  
 export const getServerSideProps: GetServerSideProps<{
   data: {
@@ -37,6 +39,12 @@ interface Props extends InferGetServerSidePropsType<typeof getServerSideProps> {
 }
 
 export default function MainPage(props : Props) {
+  useEffect(() => {
+    async function updateVistCount() {
+      updateWebsiteVisitCount({ id: props.data.metaData._id, visitCount : (props.data.metaData.visitCount || 0) + 1 });
+    }
+    updateVistCount();
+  }, [])
   return (
     <>
       <SEOComp 
