@@ -27,6 +27,10 @@ const SEOComp = (props: Props) => {
                 name="twitter:description"
                 content={props.description}
             />
+            <meta
+                name="keywords"
+                content="Software Engineer, Web Developer, JavaScript, ReactJs, NextJs, NodeJs, Data Structure, Algorithms, Java, Java Servlet"
+            />
         </Head>
     );
 };
