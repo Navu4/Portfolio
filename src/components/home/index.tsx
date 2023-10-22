@@ -1,7 +1,9 @@
 import styles from '@/components/home/home.module.css';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { CSSProperties, FC, memo } from 'react';
-import ParticleInstance from '../particle';
+
+const ParticleInstance = dynamic(() => import("../particle"));
 
 type Profession = { text : string, i : number }
 export interface HomeProps {

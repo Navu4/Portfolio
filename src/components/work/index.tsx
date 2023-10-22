@@ -1,8 +1,8 @@
 import styles from "@/components/work/work.module.css";
-import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
-import ParticleInstance from "../particle/index";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import ConnectWithMeNudge from '../info/connectWithMeNudge';
 import Link from "next/link";
+import dynamic from "next/dynamic";
 type WorkSection =  { 
     i : number, 
     websiteLink : string, 
@@ -17,6 +17,7 @@ interface Props {
     isMobile : boolean,
     work : WorkSection[]
 }
+const ParticleInstance = dynamic(() => import("../particle"));
 const Work = (props: Props) => {
     const myRef = useRef<HTMLDivElement>(null);
     const [showAnimation, setShowAnimation] = useState(false);
