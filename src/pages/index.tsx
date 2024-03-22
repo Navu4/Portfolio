@@ -48,7 +48,7 @@ export default function MainPage(props : Props) {
   return (
     <>
       <SEOComp 
-        title={`${props.data.metaData.name} &#128640; | Software Engineer`} 
+        title={`${props.data.metaData.name} | Software Engineer`} 
         description={props.data.metaData.description}
       />
       <Home {...props.data.metaData} isMobile={props.isMobile} />
