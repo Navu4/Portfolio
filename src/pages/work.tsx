@@ -1,6 +1,7 @@
 import ContactForm from "@/components/contact"
 import Work from "@/components/work"
 import { PORTFOLIO_DATA_TYPE } from "@/types/constants"
+import SEOComp from "@/utils/SEO"
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
  
 export const getServerSideProps: GetServerSideProps<{
@@ -30,6 +31,10 @@ interface Props {
 const WorkPage = (props: Props) => {
   return (
     <>
+        <SEOComp 
+          title={`${props.data.metaData.name} | Software Engineer`} 
+          description={props.data.metaData.description}
+        />
         <Work isMobile={props.isMobile} work={props.data.work} />
         <ContactForm />
     </>
