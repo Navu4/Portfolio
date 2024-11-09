@@ -2,6 +2,7 @@ import styles from '@/components/home/home.module.css';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { CSSProperties, FC, memo } from 'react';
+import Image from 'next/image';
 
 const ParticleInstance = dynamic(() => import("../particle"));
 
@@ -28,7 +29,7 @@ const Home : FC<HomeProps> = (props) => {
 
             <a href={props.resumeUrl} className={styles.downloadCV} target='_blank'>Download CV</a>
         </div>
-        <ProfessionSection coverImgUrl={props.coverImgUrl} profession={props.professionAnimationData} />
+        {!props.isMobile && <ProfessionSection coverImgUrl={props.coverImgUrl} profession={props.professionAnimationData} />}
     </section>
   )
 }
@@ -51,7 +52,7 @@ const ProfessionSection = function Section({ profession, coverImgUrl } : { profe
                 </div>
                 <div className={styles.overlay}></div>
                 <div className={styles.myImage}>
-                    <img src={coverImgUrl} alt="" />
+                    <Image src={coverImgUrl} alt="navjot_cover_img" height="590" width="608" />
                 </div>
                 <ParticleInstance id="tsparticle2" />
             </div>
