@@ -23,7 +23,7 @@ const FooterSection = (props: Props) => {
             <SocialMediaLinks socialMedia={socialMedia} styleOpposite={true} />
         </div>
         <div className={styles.copyRight}>
-            Handcrafted by me © twentytwentythree
+            Handcrafted by me © 2023
         </div>
     </footer>;
 };
